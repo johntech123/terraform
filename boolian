@@ -1,0 +1,56 @@
+provider "aws" {
+    region= "us-east-2"
+  
+}
+
+resource "aws_instance" "example" {
+    ami = var.ami_id
+    instance_type = var.instance_type
+    count = var.instance_count
+    associate_public_ip_address = var.enable_public_ip
+
+
+    tags = {
+    
+    Name = "${var.instance_name}-${count.index + 1}"
+  }
+}
+
+----------
+
+ami_id = "ami-04f167a56786e4b09"
+instance_type = "t2.micro"
+instance_name = "qa"
+instance_count = 2
+enable_public_ip = true
+
+----------
+
+variable "instance_type" {
+  description = "ec2-instance-variable"
+  type = string
+}
+
+variable "ami_id" {
+  description = "ami-value"
+  type = string
+}
+
+variable "instance_name" {
+    type = string 
+    description = "name-tag-for-instance"
+}
+
+variable "instance_count" {
+  description = "create2-ec2-instance-identical"
+  type = number
+}
+
+variable "enable_public_ip" {
+  description = "boolian public ip assign true or false"
+  type = bool
+}
+
+
+
+here we have used bool variable which true or false
