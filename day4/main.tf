@@ -61,3 +61,28 @@ resource "aws_security_group" "web_sg" {
     Name = "web_sg"
   }
 }
+
+additionally we can use list variable in dynamic block
+
+variable "port" {
+ type = list(number)
+ default = [22,443,80]
+}
+
+resource "aws_security_group" "web_sg" {
+  vpc_id = data.aws_vpc.default.id
+  name = "web_sg"
+
+  dynamic "ingress" {
+    for_each = port.value
+    iterator = port
+    content {
+        description = "HTTP for vpc"
+        from_port = port.value
+        to_port = port.value
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+  }
+
+thats it 
