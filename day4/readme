@@ -1,0 +1,38 @@
+dyanamic block:
+see if we want to repeat the block like ingress rule within sg again and again so we use dynamic block instead of writing the 
+same thing multiple times....it works like a loop inside a resource it saves time and make the code cleaner.
+so besically it genrates nested block inside a resource and it uses for_each for loop
+
+
+
+
+
+
+
+
+
+data block:
+a data block besically read and fetch information about existing resource in terraform which is u know not created or managed 
+by terraform it is something created manually on aws console\
+like vpc 
+like sg
+like subnet
+
+
+
+what is terraform validate:
+terraform validate command is used to check your terraform code for syntax errors and makes sure its valid and well formed
+its like a grammer checker
+syntex error , typo .
+
+what is terraform fmt:
+this is we use for correct indentation like to correct the spacebar so that our code look good.
+
+terraform graph:
+
+
+
+
+
+
+
