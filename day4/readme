@@ -35,4 +35,22 @@ terraform graph:
 
 
 
+terraform taint:
+terraform taint command we use to mark a specific resource for recreation during the next apply
+so besically we tell the terraform that the resource is not right so instead of modifying this resource first destroy
+it and recreate it.
+u know the resource is in bad condition so instead of modifying them we forcefully recreate them
+
+terraform taint aws_instance.my_instance     
+terraform taint aws_sg.demo_sg 
+anything 
+terraform untaint aws_instance.my_instance
+
+
+
+
+
+
+
+
 
